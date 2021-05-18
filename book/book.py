@@ -60,9 +60,9 @@ def book_appointment():
         if out.status_code == 200:
             for j in reversed(out.json()['centers']):
                 for sessions in reversed(j['sessions']):
-                    if sessions['available_capacity'] > 0 and sessions['min_age_limit'] < 45:
-                      print(f"\n {sessions['available_capacity']} {sessions['vaccine']} on {sessions['date']} at {j['name']}. \n{j['address']} {j['block_name']} {j['district_name']}  {j['state_name']}  {j['pincode']}.")
-                    if sessions['available_capacity'] >= len(BENEFICIARIES_IDS) and sessions['min_age_limit'] < 45:
+                    if sessions['available_capacity_dose1'] > 0 and sessions['min_age_limit'] < 45:
+                      print(f"\n {sessions['available_capacity_dose1']} {sessions['vaccine']} on {sessions['date']} at {j['name']}. \n{j['address']} {j['block_name']} {j['district_name']}  {j['state_name']}  {j['pincode']}.")
+                    if sessions['available_capacity_dose1'] >= len(BENEFICIARIES_IDS) and sessions['min_age_limit'] < 45:
                         book = {
                             "center_id": j['center_id'],
                             "session_id": sessions['session_id'],
